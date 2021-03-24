@@ -62,7 +62,7 @@ int main()
         }
         else{
             //printf("I'm in departure");
-            depart();
+            depart(*sim_time,*time_since_last_event,*last_event_time,*area_under_Q,*server_status,*num_in_queue,*q_delay,*total_q_delay,*num_custs_delayed,*next_dept_time);
         }   
         
     }
@@ -116,7 +116,7 @@ void arrive(void) // change to call by reference
 	}
 }
 
-void depart(void)  // change to call by regerence
+void depart(&sim_time,&time_since_last_event,&last_event_time,&area_under_Q,&server_status,&num_in_queue,&q_delay,&total_q_delay,&num_custs_delayed,&next_dept_time)  // change to call by regerence
 //Departure event function.
 {	
     sim_time = next_dept_time;
@@ -137,7 +137,7 @@ void depart(void)  // change to call by regerence
 	else
 	{
 		--num_in_queue;
-		Q_delay = sim_time-time_arrival[1];
+		q_delay = sim_time-time_arrival[1];
 		
 		total_q_delay += q_delay;
 		
